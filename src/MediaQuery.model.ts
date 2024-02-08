@@ -9,6 +9,7 @@ import {
 
 interface MediaQueryProps {
   query: string
+  defaultState?: boolean
 }
 
 /**
@@ -23,8 +24,10 @@ interface MediaQueryProps {
 @Model
 class MediaQuery {
   @Prop query: MediaQueryProps["query"] = required
+  @Prop defaultState?: boolean
+
   private mql = window.matchMedia(this.query)
-  public matches = Boolean(this.mql.matches)
+  public matches = this.defaultState ?? Boolean(this.mql.matches)
 
   @Watch
   watchQuery() {
