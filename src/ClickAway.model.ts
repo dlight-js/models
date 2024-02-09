@@ -11,18 +11,29 @@ import { off, on } from "./utils"
 
 interface ClickAwayProps {
   element: HTMLElement
-  onClickAway: (e: Event) => void
+  onClickAway: (event: Event) => void
   events?: string[]
 }
 
+/**
+ * Represents a click away model.
+ * @example
+ *
+ * import { use } from "@dlightjs/dlight"
+ *
+ * clickAway = use(ClickAway, {
+ *    element: document.body,
+ *    onClickAway: (event) => console.log('clicked away', event),
+ * })
+ */
 @Model
 class ClickAway {
-  @Prop element: ClickAwayProps["element"] = required
-  @Prop onClickAway: ClickAwayProps["onClickAway"] = required
-  @Prop events: string[] = ["mousedown", "touchstart"]
+  @Prop private element: HTMLElement = required
+  @Prop private onClickAway: (event: Event) => void = required
+  @Prop private events: string[] = ["mousedown", "touchstart"]
 
   @Watch
-  watchEvents() {
+  private watchEvents() {
     for (const event of this.events) {
       on(document, event, this.handler.bind(this))
     }

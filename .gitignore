@@ -27,3 +27,5 @@ dist-ssr
 
 **/dist/**
 **/lib/**
+
+dev.ts
