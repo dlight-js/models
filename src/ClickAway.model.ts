@@ -1,11 +1,5 @@
-import {
-  type Modeling,
-  type Pretty,
-  Watch,
-  Model,
-  Prop,
-  required,
-} from "@dlightjs/dlight"
+import type { Modeling, Pretty } from "@dlightjs/dlight"
+import { Watch, Model, Prop, required } from "@dlightjs/dlight"
 
 import { off, on } from "./utils"
 

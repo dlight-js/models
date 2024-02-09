@@ -1,11 +1,5 @@
-import {
-  Model,
-  Modeling,
-  Pretty,
-  Prop,
-  Watch,
-  required,
-} from "@dlightjs/dlight"
+import type { Modeling, Pretty } from "@dlightjs/dlight"
+import { Model, Prop, Watch, required } from "@dlightjs/dlight"
 
 interface FetchProps {
   url: string
