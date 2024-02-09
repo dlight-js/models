@@ -1,5 +1,9 @@
 export const noop = () => {}
 
+export function isBrowser(): boolean {
+  return typeof window !== "undefined"
+}
+
 export function on<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
   ...args:
