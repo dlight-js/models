@@ -23,14 +23,14 @@ interface MediaQueryProps {
  */
 @Model
 class MediaQuery {
-  @Prop query: MediaQueryProps["query"] = required
-  @Prop defaultState?: boolean
+  @Prop private query: MediaQueryProps["query"] = required
+  @Prop private defaultState?: boolean
 
   private mql = window.matchMedia(this.query)
-  public matches = this.defaultState ?? Boolean(this.mql.matches)
+  public match = this.defaultState ?? Boolean(this.mql.matches)
 
   @Watch
-  watchQuery() {
+  private watchQuery() {
     this.mql.addEventListener("change", this.onChange)
   }
 
@@ -39,7 +39,7 @@ class MediaQuery {
   }
 
   private onChange() {
-    this.matches = Boolean(this.mql.matches)
+    this.match = Boolean(this.mql.matches)
   }
 }
 
